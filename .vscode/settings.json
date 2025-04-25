@@ -1,0 +1,10 @@
+{
+	"C_Cpp.default.compilerPath": "/usr/bin/clang++",
+	"files.associations": {
+		"*.vue": "vue",
+		"*.wpy": "vue",
+		"*.wxml": "html",
+		"*.wxss": "css",
+		"string": "cpp"
+	}
+}
