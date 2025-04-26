@@ -17,9 +17,9 @@ using namespace std;  // 使用标准命名空间
 
 class Person {
  public:
-  int m_A;         // 非静态成员变量，属于类对象上的，其大小会算进类的大小中。
-  static int m_B;  // 静态成员变量，不属于类的对象上，不计入类的大小。
-  void func() {}   // 非静态成员函数，不属于类的对象上，不计入类的大小。
+  int m_A;  // 非静态成员变量，属于类对象上的，其大小会算进类的大小中。（只有其计算大小）
+  static int m_B;         // 静态成员变量，不属于类的对象上，不计入类的大小。
+  void func() {}          // 非静态成员函数，不属于类的对象上，不计入类的大小。
   static void func2() {}  // 静态成员函数，不属于类的对象上，不计入类的大小。
 };
 
@@ -33,12 +33,12 @@ void test01() {
   C++编译器给每个空对象也分配一个字节的空间，为的是区分空对象在内存中的位置。
   每个空对象都应该有一个独一无二的内存地址。
   */
-  cout << sizeof(p) << endl;  // 输出对象 p 的大小
+  cout << sizeof(p) << endl;  // 输出对象 p 的大小  4 （int 是 4 字节）
 }
 
 void test02() {
   Person p;                   // 创建一个 Person 对象
-  cout << sizeof(p) << endl;  // 输出对象 p 的大小
+  cout << sizeof(p) << endl;  // 输出对象 p 的大小  4 （int 是 4 字节）
 }
 
 int main(void) {
