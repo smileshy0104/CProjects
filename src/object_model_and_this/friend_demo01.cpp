@@ -45,12 +45,14 @@ class Building {
 Building::Building() {
   m_SittingRoom = "客厅";  // 初始化公共区域为“客厅”
   m_BedRoom = "卧室";      // 初始化私密区域为“卧室”
+  cout << "Building() 构造函数" << endl;
 }
 
 // 在类外定义 GoodGay 的构造函数
 GoodGay::GoodGay() {
   // 创建一个 Building 对象，并将其地址赋值给 building 指针
   building = new Building;
+  cout << "GoodGay() 构造函数" << endl;
 }
 
 // 在类外定义 GoodGay 的 visit 方法
