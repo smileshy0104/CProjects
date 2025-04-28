@@ -7,18 +7,24 @@ using namespace std;  // 使用标准命名空间
 class CPU {
  public:
   virtual void calculate() = 0;  // 纯虚函数，定义计算功能，子类必须实现
+  virtual ~CPU() {
+  }  // 虚析构函数，确保通过基类指针删除派生类对象时会调用派生类的析构函数
 };
 
 // 抽象显卡类
 class VideoCard {
  public:
   virtual void display() = 0;  // 纯虚函数，定义显示功能，子类必须实现
+  virtual ~VideoCard() {
+  }  // 虚析构函数，确保通过基类指针删除派生类对象时会调用派生类的析构函数
 };
 
 // 抽象内存条类
 class Memory {
  public:
   virtual void storage() = 0;  // 纯虚函数，定义存储功能，子类必须实现
+  virtual ~Memory() {
+  }  // 虚析构函数，确保通过基类指针删除派生类对象时会调用派生类的析构函数
 };
 
 // 电脑类
@@ -26,6 +32,7 @@ class Computer {
  public:
   // 构造函数，初始化 CPU、显卡和内存条指针
   Computer(CPU* cpu, VideoCard* vc, Memory* mem) {
+    cout << "电脑类构造函数执行！" << endl;
     m_cpu = cpu;  // 初始化 CPU 指针
     m_vc = vc;    // 初始化显卡指针
     m_mem = mem;  // 初始化内存条指针
@@ -33,6 +40,7 @@ class Computer {
 
   // 提供一个工作的函数，让零件工作起来
   void work() {
+    cout << "电脑开始工作了！" << endl;
     m_cpu->calculate();  // 调用 CPU 的计算功能
     m_vc->display();     // 调用显卡的显示功能
     m_mem->storage();    // 调用内存条的存储功能
@@ -40,6 +48,7 @@ class Computer {
 
   // 析构函数，释放 CPU、显卡和内存条指针
   ~Computer() {
+    cout << "电脑类析构函数执行！" << endl;
     if (m_cpu != NULL) {  // 释放 CPU 指针
       delete m_cpu;
       m_cpu = NULL;
