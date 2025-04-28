@@ -9,6 +9,9 @@ class Base {
   // 特点：无法实例化对象
   virtual void func() = 0;  // 纯虚函数，注意不要忘记加 `virtual` 关键字
   // 抽象类的子类必须重写父类中的纯虚函数，否则子类也属于抽象类
+  virtual ~Base() {
+  }  // 虚析构函数，确保通过基类指针删除派生类对象时会调用派生类的析构函数
+  // 抽象类的子类必须重写父类中的纯虚函数，否则子类也属于抽象类
 };
 
 // 子类 Son 继承自 Base
@@ -16,6 +19,7 @@ class Son : public Base {
  public:
   // 重写父类的纯虚函数 func
   void func() override { cout << "func函数调用" << endl; }
+  ~Son() override { cout << "Son 析构函数调用" << endl; }  // 派生类的析构函数
 };
 
 // 测试函数 test
