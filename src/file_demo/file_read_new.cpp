@@ -11,22 +11,30 @@ class Person {
 
 void test01() {
   // 1. 包含头文件
-  // 2. 创建文件流对象，并以二进制模式打开文件
-  ofstream ofs("person.txt", ios::out | ios::binary);
-  // 3. 打开文件
-  // ofs.open("person.txt", ios::out | ios::binary); // 另一种打开文件的方式
+  // 2. 创建文件流对象
+  ifstream ifs;
 
-  // 4. 写文件
-  Person p = {"张三", 18};  // 创建一个 Person 对象，初始化姓名和年龄
-  ofs.write((const char*)&p,
-            sizeof(Person));  // 将 Person 对象以二进制形式写入文件
+  // 3. 打开文件，并判断文件是否打开成功
+  ifs.open("person.txt",
+           ios::in | ios::binary);  // 以二进制模式打开文件 "person.txt"
+  if (!(ifs.is_open())) {
+    cout << "打开失败" << endl;  // 如果文件未成功打开，输出错误信息
+    return;                      // 返回，结束函数
+  }
+
+  // 4. 读文件
+  Person p;  // 创建一个 Person 对象用于存储读取的数据
+  ifs.read((char*)&p,
+           sizeof(Person));  // 从文件中读取二进制数据到 Person 对象中
+  cout << "姓名:" << p.m_Name << " " << "年龄:" << p.m_Age
+       << endl;  // 输出读取的内容
 
   // 5. 关闭文件
-  ofs.close();  // 关闭文件，释放资源
+  ifs.close();  // 关闭文件，释放资源
 }
 
 int main(void) {
-  test01();         // 调用 test01 函数进行二进制文件写操作
+  test01();         // 调用 test01 函数进行二进制文件读操作
   system("pause");  // 暂停程序，等待用户按键（便于观察输出）
   return 0;         // 返回 0 表示程序正常结束
 }
