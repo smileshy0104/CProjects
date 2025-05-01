@@ -2,6 +2,11 @@
 #include <set>       // 包含 set 和 multiset 容器
 using namespace std;
 
+/*
+  - **set不可以插入重复数据，而multiset可以**
+  - **set插入数据的同时会返回插入结果，表示插入是否成功**
+  - **multiset不会检测数据，因此可以插入重复数据**
+*/
 // 打印 multiset 内容的函数
 void PrintMultiSet(multiset<int>& ms) {
   for (multiset<int>::iterator it = ms.begin(); it != ms.end(); it++) {
