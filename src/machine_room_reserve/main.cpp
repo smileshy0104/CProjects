@@ -220,6 +220,7 @@ void LoginIn(string fileName, int type) {
   return;
 }
 
+// 主函数
 int main(void) {
   // 主循环，使程序持续运行直到用户选择退出
   while (1) {

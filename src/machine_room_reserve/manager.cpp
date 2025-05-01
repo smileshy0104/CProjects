@@ -13,9 +13,11 @@ Manager::Manager(string name, string pwd) {
 
   // 初始化机房信息
   ifstream ifs;
+  // 打开文件
   ifs.open(COMPUTER_FILE, ios::in);
 
   computerRoom com;
+  // 读取并添加到vCom中
   while (ifs >> com.m_ComId && ifs >> com.m_ManNum) {
     vCom.push_back(com);
   }
