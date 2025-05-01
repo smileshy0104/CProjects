@@ -113,7 +113,6 @@ void managerMenu(Identity*& manager) {
 }
 
 // 登录功能
-// 文件名 身份类型
 void LoginIn(string fileName, int type) {
   Identity* person = NULL;  // 父类指针指向子类对象
 
@@ -147,13 +146,14 @@ void LoginIn(string fileName, int type) {
   cout << "请输入密码:" << endl;
   cin >> pwd;
 
+  // 根据用户类型进行不同的身份验证
   if (type == 1) {
     // 学生身份验证
     int fId;
     string fName;
     string fPwd;
     while (ifs >> fId && ifs >> fName && ifs >> fPwd) {
-      // 与用户输入的信息做对比、
+      // 与用户输入的信息做对比
       if (fId == id && fName == name && fPwd == pwd) {
         cout << "学生验证登录成功" << endl;
         system("pause");
@@ -171,7 +171,7 @@ void LoginIn(string fileName, int type) {
     string fName;
     string fPwd;
     while (ifs >> fId && ifs >> fName && ifs >> fPwd) {
-      // 与用户输入的信息做对比、
+      // 与用户输入的信息做对比
       if (fId == id && fName == name && fPwd == pwd) {
         cout << "老师验证登录成功" << endl;
         system("pause");
@@ -183,14 +183,12 @@ void LoginIn(string fileName, int type) {
         return;
       }
     }
-
   } else if (type == 3) {
     // 管理员身份验证
-
     string fName;
     string fPwd;
     while (ifs >> fName && ifs >> fPwd) {
-      // 与用户输入的信息做对比、
+      // 与用户输入的信息做对比
       if (fName == name && fPwd == pwd) {
         cout << "管理员验证登录成功" << endl;
         system("pause");
@@ -199,12 +197,12 @@ void LoginIn(string fileName, int type) {
         person = new Manager(name, pwd);
         // 进入管理员身份的子菜单
         managerMenu(person);
-
         return;
       }
     }
   }
 
+  // 如果所有验证均失败
   cout << "验证登录失败！" << endl;
   system("pause");
   system("cls");
@@ -212,20 +210,26 @@ void LoginIn(string fileName, int type) {
 }
 
 int main(void) {
+  // 主循环，使程序持续运行直到用户选择退出
   while (1) {
+    // 显示系统欢迎界面和选项菜单
     cout << "——————————————" << endl;
     cout << "  欢迎使用机房预约系统系统" << endl;
     cout << "——————————————" << endl;
     cout << "\t1.学生代表" << endl;
-    cout << "\t2.老  师" << endl;
+    cout << "\t2.老师" << endl;
     cout << "\t3.管理员" << endl;
-    cout << "\t0.退  出" << endl;
+    cout << "\t0.退出" << endl;
     cout << "——————————————" << endl;
     cout << "请输入您的选择" << endl;
 
+    // 存储用户的选择
     int select = 0;
 
+    // 从用户获取选择输入
     cin >> select;
+
+    // 根据用户选择执行对应的操作
     switch (select) {
       case 1:  // 学生
         LoginIn(STUDENT_FILE, 1);
@@ -237,11 +241,13 @@ int main(void) {
         LoginIn(ADMIN_FILE, 3);
         break;
       case 0:  // 退出
+        // 用户选择退出，显示告别信息并退出程序
         cout << "欢迎下次使用!" << endl;
         system("pause");
         return 0;
         break;
       default:
+        // 如果用户输入无效选择，提示错误并刷新界面
         cout << "输入有误，请重新选择！" << endl;
         system("pause");
         system("cls");
@@ -249,6 +255,7 @@ int main(void) {
     }
   }
 
+  // 程序结束前暂停，以便用户查看信息
   system("pause");
   return 0;
 }
