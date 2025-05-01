@@ -3,11 +3,11 @@
 #include <string>
 #include <vector>
 
-#include "Identity.h"
+#include "identity.h"
 #include "orderFile.h"
 using namespace std;
 
-class Teacher : public Indentity {
+class Teacher : public Identity {
  public:
   // 默认构造
   Teacher();

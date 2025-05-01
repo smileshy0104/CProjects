@@ -4,14 +4,14 @@
 #include <string>
 #include <vector>
 
-#include "Identity.h"
 #include "computerRoom.h"
 #include "globalFile.h"
+#include "identity.h"
 #include "orderFile.h"
 using namespace std;
 
 // 学生类
-class Student : public Indentity {
+class Student : public Identity {
  public:
   // 默认构造
   Student();

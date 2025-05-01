@@ -2,16 +2,16 @@
 #include <iostream>
 #include <string>
 
-#include "Identity.h"
-#include "Student.h"
 #include "globalFile.h"
+#include "identity.h"
 #include "manager.h"
+#include "student.h"
 #include "teacher.h"
 
 using namespace std;
 
 // 进入教师子菜单界面
-void teacherMenu(Indentity*& teacher) {
+void teacherMenu(Identity*& teacher) {
   while (1) {
     // 调用子菜单界面
     teacher->operMenu();
@@ -38,7 +38,7 @@ void teacherMenu(Indentity*& teacher) {
 }
 
 // 进入学生子菜单界面
-void studentMenu(Indentity*& student) {
+void studentMenu(Identity*& student) {
   while (1) {
     // 调用学生子菜单
     student->operMenu();
@@ -74,7 +74,7 @@ void studentMenu(Indentity*& student) {
 }
 
 // 进入管理员子菜单界面
-void managerMenu(Indentity*& manager) {
+void managerMenu(Identity*& manager) {
   while (1) {
     // 调用管理员子菜单
     manager->operMenu();
@@ -115,7 +115,7 @@ void managerMenu(Indentity*& manager) {
 // 登录功能
 // 文件名 身份类型
 void LoginIn(string fileName, int type) {
-  Indentity* person = NULL;  // 父类指针指向子类对象
+  Identity* person = NULL;  // 父类指针指向子类对象
 
   // 读文件
   ifstream ifs;

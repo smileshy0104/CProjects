@@ -5,13 +5,14 @@
 #include <string>
 #include <vector>
 
-#include "Identity.h"
-#include "Student.h"
 #include "computerRoom.h"
 #include "globalFile.h"
+#include "identity.h"
+#include "student.h"
 #include "teacher.h"
 using namespace std;
-class Manager : public Indentity {
+
+class Manager : public Identity {
  public:
   // 默认构造
   Manager();
