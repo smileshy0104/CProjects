@@ -22,6 +22,10 @@ void test01() {
   // 插入第一个元素 10，并通过 pair 接收插入结果
   pair<set<int>::iterator, bool> ret = s1.insert(10);
 
+  cout << "插入结果：" << endl;
+  cout << "插入元素：" << *(ret.first) << endl;
+  cout << "插入结果：" << ret.second << endl;
+  // 判断插入结果，如果成功则输出插入成功
   if (ret.second) {
     cout << "插入成功" << endl;
   } else {
