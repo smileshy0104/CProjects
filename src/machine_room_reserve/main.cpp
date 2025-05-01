@@ -16,11 +16,16 @@ void teacherMenu(Identity*& teacher) {
     // 调用子菜单界面
     teacher->operMenu();
 
+    // 将教师对象转换为Teacher类型，以便调用特定的成员函数
     Teacher* tea = (Teacher*)teacher;
 
+    // 初始化选择变量
     int select = 0;
 
+    // 从用户获取菜单选择输入
     cin >> select;
+
+    // 根据用户选择执行对应的操作
     if (select == 1)  // 查看所有预约
     {
       tea->showAllOrder();
@@ -28,6 +33,7 @@ void teacherMenu(Identity*& teacher) {
     {
       tea->validOrder();
     } else {
+      // 注销教师对象并返回主菜单
       delete teacher;
       cout << "注销成功" << endl;
       system("pause");
@@ -43,12 +49,13 @@ void studentMenu(Identity*& student) {
     // 调用学生子菜单
     student->operMenu();
 
+    // 将学生身份指针转换为学生类指针以访问学生特定方法
     Student* stu = (Student*)student;
 
     int select = 0;
-
     cin >> select;  // 接收用户选择
 
+    // 根据用户选择执行对应操作
     if (select == 1)  // 申请预约
     {
       stu->applyOrder();
@@ -118,6 +125,7 @@ void LoginIn(string fileName, int type) {
 
   // 读文件
   ifstream ifs;
+  // 打开文件
   ifs.open(fileName, ios::in);
 
   // 判断文件是否存在
@@ -152,6 +160,7 @@ void LoginIn(string fileName, int type) {
     int fId;
     string fName;
     string fPwd;
+    // 循环读取文件中的数据
     while (ifs >> fId && ifs >> fName && ifs >> fPwd) {
       // 与用户输入的信息做对比
       if (fId == id && fName == name && fPwd == pwd) {
@@ -170,6 +179,7 @@ void LoginIn(string fileName, int type) {
     int fId;
     string fName;
     string fPwd;
+    // 循环读取文件中的数据
     while (ifs >> fId && ifs >> fName && ifs >> fPwd) {
       // 与用户输入的信息做对比
       if (fId == id && fName == name && fPwd == pwd) {
@@ -187,6 +197,7 @@ void LoginIn(string fileName, int type) {
     // 管理员身份验证
     string fName;
     string fPwd;
+    // 循环读取文件中的数据
     while (ifs >> fName && ifs >> fPwd) {
       // 与用户输入的信息做对比
       if (fName == name && fPwd == pwd) {
